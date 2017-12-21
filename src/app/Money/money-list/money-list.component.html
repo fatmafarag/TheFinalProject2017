@@ -1,0 +1,46 @@
+<h2> The money tracker..</h2>
+
+<table class="table table-striped table-hover">
+  <thead>
+  <tr>
+    <th> Date </th>
+    <th> Start</th>
+    <th> End</th>
+    <th> TotHrs</th>
+    <th> Salary</th>
+    <th> &nbsp;</th> 
+    
+  </tr>
+</thead>
+<tbody>
+  <tr *ngFor="let themoney of Money">
+    <td> {{themoney.Date}}</td>
+    <td> {{themoney.Start}}</td>
+    <td> {{themoney.End}}</td>
+    <td> {{themoney.Tothrs}}</td>
+    <td> {{themoney.Salary}}</td>
+    <td>
+      <button class="btn btn-info" (click)="showmoneyform(themoney)"><i class="fa fa-edit"></i></button>
+      <button class="btn btn-danger" (click)="removemoney(themoney)"><i class="fa fa-minus"></i></button>  
+
+    </td>
+  </tr>
+</tbody>  
+</table>
+
+<button *ngIf="!newmoney" class="btn btn-success" (click)="showmoneyform(null)"><i class="fa fa-plus"></i></button>
+<br/>
+<br/>
+
+<form *ngIf="showForm">
+  <h2> The Day details</h2>
+  <p> The Date: <input type="text" name="Date" [(ngModel)]="formmoney.Date"/></p>
+  <p> Start: <input type="text" name="Start" [(ngModel)]="formmoney.Start"/></p>
+  <p> End: <input type="text" name="End" [(ngModel)]="formmoney.End"/></p>
+  <p> The total hours: <input type="text" name="TotHrs" [(ngModel)]="formmoney.TotHrs"/></p>
+  <p> The salary: <input type="text" name="Salary" [(ngModel)]="formmoney.Salary"/></p>
+  
+  <p>
+    <button type="button" class="btn btn-primary" (click)="savemoney(formmoney)">Submit</button>
+  </p>
+</form>

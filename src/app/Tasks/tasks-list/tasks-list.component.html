@@ -1,0 +1,42 @@
+<h1> The Tasks </h1>
+
+<table class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th>Id</th>
+    <th> The Task </th>
+    <th> The deadline</th>
+    <th> No. of Hours</th>
+    <th> Status</th>
+    <th> &nbsp;</th>     
+  </tr>
+</thead>
+<tbody>
+    <tr *ngFor="let task of tasks">
+      <td>{{task.id}}</td>
+    <td> {{task.TheTask}}</td>
+    <td> {{task.Thedeadline}}</td>
+    <td> {{task.Hours}}</td>
+    <td> {{task.Status}}</td>
+    <td>
+      <button class="btn btn-info" (click)="showtaskform(task)"><i class="fa fa-edit"></i></button>
+      <button class="btn btn-danger" (click)="removeTask(task)"><i class="fa fa-minus"></i></button>  
+    </td>  
+      
+  </tr>
+</tbody>
+</table>
+<button *ngIf="!newthetask" class="btn btn-success" (click)="showtaskform(null)"><i class="fa fa-plus"></i></button>
+<br/>
+<br/>
+
+<form *ngIf="showForm">
+  <h2> The task details</h2>
+  <p> The task: <input type="text" name="TheTask" [(ngModel)]="formTask.TheTask"/></p>
+  <p> The deadline: <input type="text" name="thedeadline" [(ngModel)]="formTask.Thedeadline"/></p>
+  <p> The Hours: <input type="text" name="Hours" [(ngModel)]="formTask.Hours"/></p>
+  <p> The Status: <input type="text" name="Status" [(ngModel)]="formTask.Status"/></p>
+  <p>
+    <button type="button" class="btn btn-primary" (click)="saveTask(formTask)">Submit</button>
+  </p>
+</form>
